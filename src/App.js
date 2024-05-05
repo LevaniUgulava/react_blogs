@@ -6,8 +6,17 @@ function App() {
   const [selectedIds, setSelectedIds] = useState([]);
     const [products, setProducts] = useState([]);
 
+    const fetchData = async () => {
+      try {
+          const response = await axios.get(`${BASE_URL}/`);
+          setProducts(response.data);
+      } catch (error) {
+          console.log(error);
+      }
+  };
+
     useEffect(() => {
-        fetchData(setProducts);
+      fetchData();
     }, []);
     
 
