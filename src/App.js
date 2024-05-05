@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import { fetchData, handleMassDelete, handleToggleSelect } from './helpers/helpers';
+import { BASE_URL, fetchData, handleMassDelete, handleToggleSelect } from './helpers/helpers';
+import axios from 'axios';
 
 function App() {
   const [selectedIds, setSelectedIds] = useState([]);
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([{"id":123,"sku":"aaa","name":"bbb","type":"Furniture","price":4,"details":"{\"height\":\"3\",\"width\":\"3\",\"length\":\"7\"}"},{"id":124,"sku":"aa","name":"cc","type":"DVD","price":5,"details":"{\"size\":\"6\"}"}]);
 
     const fetchData = async () => {
       try {
