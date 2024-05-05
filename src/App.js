@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Product from './components/Product';
-import { fetchData, handleMassDelete } from './helpers/helpers';
+import { fetchData, handleMassDelete, handleToggleSelect } from './helpers/helpers';
 
 function App() {
   const [selectedIds, setSelectedIds] = useState([]);
@@ -31,7 +31,22 @@ function App() {
             <div className="container mx-auto p-4">
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {products && products?.map((product) => (
-                        <Product key={product.id} product={product} setSelectedIds={setSelectedIds}/>
+                        <div className="col-span-1 relative" key={product.id}>
+                        <div className="border border-gray-200 rounded-lg shadow-lg overflow-hidden">
+                            <div className="p-5">
+                                <div className=" flex justify-center ">
+                                <div className="text-center">
+                                         <p>{product.sku}</p>
+                                        <p>{product.name}</p>
+                                        <p>{product.price} $</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="absolute left-5 top-4">
+                            <input type="checkbox" className="delete-checkbox" onChange={() => handleToggleSelect(product.id,setSelectedIds)}/>
+                        </div>
+                    </div>
                     ))}
                 </div>
             </div>
