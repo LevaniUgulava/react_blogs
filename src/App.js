@@ -2,13 +2,17 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import { fetchData, handleMassDelete, handleToggleSelect } from './helpers/helpers';
 
+const products = [
+  {"id":123,"sku":"aaa","name":"bbb","type":"Furniture","price":4,"details":"{\"height\":\"3\",\"width\":\"3\",\"length\":\"7\"}"},{"id":124,"sku":"aa","name":"cc","type":"DVD","price":5,"details":"{\"size\":\"6\"}"}
+]
+
 function App() {
   const [selectedIds, setSelectedIds] = useState([]);
-    const [products, setProducts] = useState([]);
+    // const [products, setProducts] = useState([]);
 
-    useEffect(() => {
-        fetchData(setProducts);
-    }, []);
+    // useEffect(() => {
+    //     fetchData(setProducts);
+    // }, []);
     
 
     return (
@@ -20,9 +24,9 @@ function App() {
                       <ul className="flex items-center space-x-4">
                           <li>
                           </li>
-                          <button onClick={() => handleMassDelete(selectedIds,setSelectedIds,setProducts)} id="delete-product-btn" className="hover:text-gray-300 transition duration-150 ease-in-out">
+                          {/* <button onClick={() => handleMassDelete(selectedIds,setSelectedIds,setProducts)} id="delete-product-btn" className="hover:text-gray-300 transition duration-150 ease-in-out">
                               MASS DELETE
-                          </button>
+                          </button> */}
                       </ul>
                   </div>
               </div>
